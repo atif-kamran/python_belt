@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login and Register</title>
+    <!-- /*<style>
+          body{
+            padding-left: 30px;
+            width:100%;
+            height:auto;
+            border: 15px solid darkblue;
+            background: linear-gradient(to bottom, #e4f5fc  0%,#bfe8f9  50%,#9fd8ef  51%,#2ab0ed  100%);
+          }
+        </style>*/ -->
+
+  </head>
+  <body>
+    {% if messages %}
+    {% for message in messages %}
+    <li><ul>{% if message.tags %}{% endif %}{{ message }}</ul></li>
+    {% endfor %}
+    {% endif %}</h1>
+    {% csrf_token %}
+
+
+    <h3>Registration</h3>
+
+    <form action="/register" method="post">
+      {% csrf_token %}
+
+      <p>First Name:
+      <input type="text" name="first_name" placeholder="First Name"></p>
+      <p>Last Name:
+      <input type="text" name="last_name" placeholder="Last Name">
+      <p>Email:
+      <input type="text" name="email" placeholder="Email"></p>
+      <p>Password:
+      <input type="password" name="password" placeholder="Password"></p>
+      <p>Confirm Password:
+      <input type="password" name="confirm_password" placeholder="Confirm Password"></p>
+      <input type="submit" value="Register">
+    </form><br>
+    <h3>Login</h3>
+
+    <form action="/login" method="post">
+      {% csrf_token %}
+
+      <p>Email:
+      <input type="text" name="user_email" placeholder="Email"></p>
+      <p>Password:
+      <input type="password" name="password" placeholder="Password"></p>
+      <input type="submit" value="Login">
+    </form>
+  </body>
+</html>
